@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 class Header extends Component {
   render() {
     return (
-      <div>
-        <h1>This is a {this.props.surveyType} survey</h1>
+      <header style={headerStyle}>
+        <h1>This is a {this.props.surveyType} Survey</h1>
         <h2>{this.props.userName}</h2>
-      </div>
+      </header>
     );
   }
 }
@@ -15,6 +15,13 @@ class Header extends Component {
 Header.propTypes = {
   userName: PropTypes.string.isRequired,
   surveyType: PropTypes.string.isRequired
+}
+
+const headerStyle = {
+  background: '#333',
+  color: '#fff',
+  textAlign: 'center',
+  padding: '10px',
 }
 
 export default Header;

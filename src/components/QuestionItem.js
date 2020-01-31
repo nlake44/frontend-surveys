@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 export class QuestionItem extends Component {
   getStyle = () => {
-    { return itemStyle }
+    return itemStyle
   }
+  // Render something different depending on the type of question:
+  // freeForm or multiple.
 
   render() {
     return (
