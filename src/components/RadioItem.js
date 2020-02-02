@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
 export class RadioItem extends Component {
+  state = {
+    checked: false,
+    value: ''
+  }
+
   getStyle = () => {
     return itemStyle
   }
 
-  onChange = (e) => this.setState({ [e.target.name]:
-    e.target.value });
-
-  getLabel = () => {
+  getLabelValue = () => {
     if (this.props.text === "") {
       return
     }
@@ -18,9 +20,21 @@ export class RadioItem extends Component {
 
   render() {
     return (
-      <div>
-      <div><input type="radio" onChange={this.onChange} style={this.getStyle()} /></div>
-      <div>{this.getLabel()}</div>
+      <div className="form-check">
+        <label>
+          <div>
+            <input
+              type="radio"
+              onChange={this.props.onChange}
+              style={this.getStyle()}
+              value={this.props.value}
+              checked={this.props.selected}
+            />
+          </div>
+          <div>
+            {this.getLabelValue()}
+          </div>
+        </label>
       </div>
     )
   }
@@ -28,7 +42,10 @@ export class RadioItem extends Component {
 
 RadioItem.propTypes = {
   question: PropTypes.object.isRequired,
-  text: PropTypes.string
+  text: PropTypes.string,
+  value: PropTypes.number,
+  onChange: PropTypes.func,
+  selected: PropTypes.bool
 }
 
 const itemStyle = {
