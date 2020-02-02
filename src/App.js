@@ -4,30 +4,52 @@ import Questions from './components/Questions';
 
 class App extends Component {
   state = {
+    // TODO: All questions will eventually come server side.
     questions: [
       {
         id: 1,
-        questionType: 'multiple',
-        text: "My manager does not micromanage me.",
-        answered: false
+        type: 'multiple',
+        text: 'My manager does not micromanage me.',
+        answered: false,
+        numberOfOptions: 5,
+        lowOptionText: 'Strongly Disagree',
+        highOptionText: 'Strongly Agree'
       },
       {
         id: 2,
-        questionType: 'multiple',
-        text: "My manager provides stretch opportunities.",
-        answered: false
+        type: 'multiple',
+        text: 'My manager provides stretch opportunities.',
+        answered: false,
+        numberOfOptions: 5,
+        lowOptionText: 'Strongly Disagree',
+        highOptionText: 'Strongly Agree'
       },
       {
         id: 3,
-        questionType: 'multiple',
-        text: "My manager cares about me as a person.",
-        answered: false
+        type: 'multiple',
+        text: 'My manager cares about me as a person.',
+        answered: false,
+        numberOfOptions: 5,
+        lowOptionText: 'Strongly Disagree',
+        highOptionText: 'Strongly Agree'
       },
       {
         id: 4,
-        questionType: 'freeForm',
+        type: 'freeForm',
         text: "What should my manager keep doing?",
-        answered: false 
+        answered: false,
+        numberOfOptions: 0,
+        lowOptionText: '',
+        highOptionText: '',
+      },
+      {
+        id: 5,
+        type: 'freeForm',
+        text: "What should my manager improve on?",
+        answered: false,
+        numberOfOptions: 0,
+        lowOptionText: '',
+        highOptionText: '',
       }
     ]
   }
@@ -38,7 +60,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.questions);
     return(
       <div className="App">
         <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
