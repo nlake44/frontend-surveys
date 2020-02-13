@@ -59,11 +59,22 @@ class App extends Component {
     surveyType: "Manager" 
   }
 
+  onSubmit = (e) => {
+    e.preventDefault();
+    // this.state.questions
+  }
+
+  newSelection = () => {
+    console.log("New selection made!")
+  }
+
   render() {
     return(
       <div className="App">
         <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
-        <Questions questions={this.state.questions} />
+        <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
+        <Questions questions={this.state.questions} newSelection={this.newSelection} />
+        </form>
       </div>
     )
   }
