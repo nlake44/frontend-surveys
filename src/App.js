@@ -73,7 +73,9 @@ class App extends Component {
       <div className="App">
         <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
         <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
-        <Questions questions={this.state.questions} newSelection={this.newSelection} />
+        <div>
+          <Questions questions={this.state.questions} newSelection={this.newSelection} />
+        </div>
         </form>
       </div>
     )
