@@ -61,11 +61,17 @@ class App extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    console.log("SUBMITTED")
     // this.state.questions
   }
 
   newSelection = () => {
     console.log("New selection made!")
+  }
+
+  onChange = (value) => {
+    console.log("OnChange!")
+    console.log(value)
   }
 
   render() {
@@ -74,7 +80,7 @@ class App extends Component {
         <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
         <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
         <div>
-          <Questions questions={this.state.questions} newSelection={this.newSelection} />
+          <Questions questions={this.state.questions} onChange={this.OnChange} />
         </div>
         </form>
       </div>

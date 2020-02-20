@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-
-import RadioOptions from './RadioOptions'
+import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons';
 
 export class QuestionItem extends Component {
   getStyle = () => {
     return itemStyle
-  }
-
-  getMultipleChoiceStyle = () => {
-    return multipleChoiceStyle
   }
 
   getFreeFormStyle = () => {
@@ -20,18 +15,31 @@ export class QuestionItem extends Component {
     return inputStyle
   }
 
-  onChange = (e) => this.setState({ [e.target.name]:
-    e.target.value });
-
   // Render something different depending on the type of question:
   // freeForm or multiple.
   render() {
     if (this.props.question.type === 'multiple'){
       return (
-        <div onChange={this.onChange} style={this.getMultipleChoiceStyle()}>
-          <p>{ this.props.question.text }</p>
-          <RadioOptions key={this.props.question.id} question={this.props.question} />
-        </div>
+      <div>
+        <h2>{this.props.question.text}</h2>
+        <RadioGroup onChange={this.props.onChange.bind(this, this.props.question.id)} horizontal>
+          <RadioButton value="stronglyDisagree" rootColor="black">
+            Strongly Disagree
+          </RadioButton>
+          <RadioButton value="disagree" rootColor="black">
+            Disagree
+          </RadioButton>
+          <RadioButton value="neutral" rootColor="black">
+            Neutral
+          </RadioButton>
+          <ReversedRadioButton value="Agree" rootColor="black">
+            Agree
+          </ReversedRadioButton>
+          <ReversedRadioButton value="Strongly Agree" rootColor="black">
+            Strongly Agree
+          </ReversedRadioButton>
+        </RadioGroup>
+      </div>
       )
     }
     else if (this.props.question.type === 'freeForm'){
@@ -42,7 +50,7 @@ export class QuestionItem extends Component {
             style={this.getInputStyle()}
             name={this.props.question.id}
             placeholder={this.props.question.text}
-            onChange={this.onChange}
+            onChange={this.props.onChange.bind(this, this.props.question.id)}
           />
         </form>
       )
@@ -58,7 +66,8 @@ export class QuestionItem extends Component {
 }
 
 QuestionItem.propTypes = {
-  question: PropTypes.object.isRequired
+  question: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 const itemStyle = {
@@ -74,11 +83,6 @@ const freeFormStyle = {
 const inputStyle = {
   flex: '10',
   padding: '5px'
-}
-
-const multipleChoiceStyle = {
-  flex: '10',
-  padding: '10px'
 }
 
 export default QuestionItem
