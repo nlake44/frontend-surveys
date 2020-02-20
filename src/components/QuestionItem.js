@@ -67,7 +67,7 @@ export class QuestionItem extends Component {
 
 QuestionItem.propTypes = {
   question: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 }
 
 const itemStyle = {

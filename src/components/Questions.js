@@ -12,7 +12,7 @@ class Questions extends Component {
 
 Questions.propTypes = {
   questions: PropTypes.array.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 }
 
 export default Questions;

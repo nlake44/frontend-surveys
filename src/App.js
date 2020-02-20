@@ -65,24 +65,19 @@ class App extends Component {
     // this.state.questions
   }
 
-  newSelection = () => {
-    console.log("New selection made!")
-  }
-
-  onChange = (value) => {
+  onChange = event => {
     console.log("OnChange!")
-    console.log(value)
+    console.log(event)
   }
 
   render() {
+    console.log(this.onChange)
     return(
       <div className="App">
         <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
-        <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
         <div>
-          <Questions questions={this.state.questions} onChange={this.OnChange} />
+          <Questions onChange={this.onChange} questions={this.state.questions} />
         </div>
-        </form>
       </div>
     )
   }
