@@ -15,8 +15,8 @@ export class QuestionItem extends Component {
     return inputStyle
   }
 
-  newSelection = (question) => {
-    this.props.onChange(question, this.props.question.id)
+  newSelection = (answer) => {
+    this.props.onChange(answer, this.props.question.id)
   }
 
   // Render something different depending on the type of question:
