@@ -15,6 +15,10 @@ export class QuestionItem extends Component {
     return inputStyle
   }
 
+  newSelection = (question) => {
+    this.props.onChange(question, this.props.question.id)
+  }
+
   // Render something different depending on the type of question:
   // freeForm or multiple.
   render() {
@@ -22,7 +26,7 @@ export class QuestionItem extends Component {
       return (
       <div>
         <h2>{this.props.question.text}</h2>
-        <RadioGroup onChange={this.props.onChange.bind(this, this.props.question.id)} horizontal>
+        <RadioGroup onChange={this.newSelection} horizontal>
           <RadioButton value="stronglyDisagree" rootColor="black">
             Strongly Disagree
           </RadioButton>
@@ -32,10 +36,10 @@ export class QuestionItem extends Component {
           <RadioButton value="neutral" rootColor="black">
             Neutral
           </RadioButton>
-          <ReversedRadioButton value="Agree" rootColor="black">
+          <ReversedRadioButton value="agree" rootColor="black">
             Agree
           </ReversedRadioButton>
-          <ReversedRadioButton value="Strongly Agree" rootColor="black">
+          <ReversedRadioButton value="stronglyAgree" rootColor="black">
             Strongly Agree
           </ReversedRadioButton>
         </RadioGroup>
