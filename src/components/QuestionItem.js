@@ -29,7 +29,7 @@ export class QuestionItem extends Component {
   render() {
     if (this.props.question.type === 'multiple'){
       return (
-        <Card style={ { fontFamily: 'Roboto' } }variant="outlined">
+        <Card style={ { fontFamily: 'Roboto', margin: '10px', padding: '10px' } } variant="outlined">
           <CardContent>
             <h2>{this.props.question.text}</h2>
             <RadioGroup onChange={this.newSelection} horizontal>
