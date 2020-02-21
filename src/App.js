@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 
 class App extends Component {
   state = {
+    requiresSubmit: false,
     questions: [
       {
         id: 1,
@@ -104,23 +105,25 @@ class App extends Component {
     surveyType: "Manager" 
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
+  onSubmit = () => {
     console.log("SUBMITTED")
     // TODO
     // Post data to server.
 
     // Disable the button and update button text to "Update" 
+    this.setState({requiresSubmit: false})
+    console.log("Submit Requires update:")
+    console.log(this.state.requiresSubmit)
   }
 
   onChange = (questionText, answer) => {
     console.log("OnChange!")
     console.log(questionText)
     console.log(answer)
-  }
-
-  onClick = () => {
-    console.log("Submit!")
+    // Enable the submit button since the form was updated.
+    this.setState({requiresSubmit: true})
+    console.log("Requires update:")
+    console.log(this.state.requiresSubmit)
   }
 
   render() {
@@ -130,7 +133,7 @@ class App extends Component {
         <div>
           <Questions onChange={this.onChange} questions={this.state.questions} />
         </div>
-        <Button onClick={() => { this.onClick() }} fullWidth={true} variant="contained" color="primary">
+        <Button disabled={!this.state.requiresSubmit} onClick={ this.onSubmit } fullWidth={true} variant="contained" color="primary">
           Submit
         </Button>
       </div>
