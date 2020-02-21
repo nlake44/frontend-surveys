@@ -1,12 +1,22 @@
-import React, {Component} from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import Questions from './components/Questions';
-import Button from '@material-ui/core/Button';
+import React, {Component} from 'react';
 
 class App extends Component {
   state = {
     requiresSubmit: false,
-    questions: [
+    peerQuestions: [
+      {
+        id: 1,
+        type: 'multiple',
+        text: 'Execution.',
+        answer: '',
+     },
+    ],
+    managerQuestions: [
       {
         id: 1,
         type: 'multiple',
@@ -128,15 +138,48 @@ class App extends Component {
 
   render() {
     return(
-      <div className="App">
-        <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
-        <div>
-          <Questions onChange={this.onChange} questions={this.state.questions} />
+      <Router>
+        <div className="App">
+          <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
+          <Route
+            exact
+            path="/manager"
+            render={props => (
+              <React.Fragment>
+                <Questions onChange={this.onChange} questions={this.state.managerQuestions} />
+                <Button
+                  disabled={!this.state.requiresSubmit}
+                  onClick={ this.onSubmit }
+                  fullWidth={true}
+                  variant="contained"
+                  color="primary">
+                  Submit
+                </Button>
+              </React.Fragment>
+           )}
+          />
+          <Route
+            exact
+            path="/peer"
+            render={props => (
+              <React.Fragment>
+                <Questions onChange={this.onChange} questions={this.state.peerQuestions} />
+                <Button disabled={!this.state.requiresSubmit} onClick={ this.onSubmit } fullWidth={true} variant="contained" color="primary">
+                  Submit
+                </Button>
+              </React.Fragment>
+           )}
+           />
+           <Route
+             exact
+             path="/"
+             render={props => (
+                 <h1>Get the app from the <a href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}>iOS App Store</a> or <a href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}>Android Play Store</a>.</h1>
+             )}
+           />
+          <Footer userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
         </div>
-        <Button disabled={!this.state.requiresSubmit} onClick={ this.onSubmit } fullWidth={true} variant="contained" color="primary">
-          Submit
-        </Button>
-      </div>
+      </Router>
     )
   }
 }

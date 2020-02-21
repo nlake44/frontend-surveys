@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types';
-import { RadioGroup, RadioButton } from 'react-radio-buttons';
-import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import PropTypes from 'prop-types';
+import { RadioGroup, RadioButton } from 'react-radio-buttons';
+import React, { Component } from 'react'
+import TextField from '@material-ui/core/TextField';
 
 export class QuestionItem extends Component {
   getTextStyle = () => {
@@ -55,17 +55,21 @@ export class QuestionItem extends Component {
     }
     else if (this.props.question.type === 'freeForm'){
       return (
-        <form noValidate autoComplete="off">
-          <div>
-            <TextField
-              style={this.getTextStyle()}
-              id={this.props.question.id.toString()}
-              multiline label={this.props.question.text}
-              color="secondary"
-              onChange={this.newText}
-            />
-          </div>
-        </form>
+        <Card style={ { fontFamily: 'Roboto', margin: '10px', padding: '10px' } } variant="outlined">
+          <CardContent>
+            <form noValidate autoComplete="off">
+              <div>
+                <TextField
+                  style={this.getTextStyle()}
+                  id={this.props.question.id.toString()}
+                  multiline label={this.props.question.text}
+                  color="secondary"
+                  onChange={this.newText}
+                />
+              </div>
+            </form>
+          </CardContent>
+        </Card>
       )
     }
     else {
