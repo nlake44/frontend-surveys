@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 export class QuestionItem extends Component {
   getTextStyle = () => {
     return {
       margin: 10,
+      paddingBottom: 40,
       width: 400,
     }
   }
@@ -26,26 +29,28 @@ export class QuestionItem extends Component {
   render() {
     if (this.props.question.type === 'multiple'){
       return (
-        <div>
-          <h2>{this.props.question.text}</h2>
-          <RadioGroup onChange={this.newSelection} horizontal>
-            <RadioButton value="stronglyDisagree" rootColor="black">
-              Strongly Disagree
-            </RadioButton>
-            <RadioButton value="disagree" rootColor="black">
-              Disagree
-            </RadioButton>
-            <RadioButton value="neutral" rootColor="black">
-              Neutral
-            </RadioButton>
-            <RadioButton value="agree" rootColor="black">
-              Agree
-            </RadioButton>
-            <RadioButton value="stronglyAgree" rootColor="black">
-              Strongly Agree
-            </RadioButton>
-          </RadioGroup>
-        </div>
+        <Card style={ { fontFamily: 'Roboto' } }variant="outlined">
+          <CardContent>
+            <h2>{this.props.question.text}</h2>
+            <RadioGroup onChange={this.newSelection} horizontal>
+              <RadioButton value="stronglyDisagree" rootColor="black">
+                Strongly Disagree
+              </RadioButton>
+              <RadioButton value="disagree" rootColor="black">
+                Disagree
+              </RadioButton>
+              <RadioButton value="neutral" rootColor="black">
+                Neutral
+              </RadioButton>
+              <RadioButton value="agree" rootColor="black">
+                Agree
+              </RadioButton>
+              <RadioButton value="stronglyAgree" rootColor="black">
+                Strongly Agree
+              </RadioButton>
+            </RadioGroup>
+          </CardContent>
+        </Card>
       )
     }
     else if (this.props.question.type === 'freeForm'){

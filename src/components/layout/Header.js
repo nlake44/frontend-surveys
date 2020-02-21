@@ -5,8 +5,9 @@ class Header extends Component {
   render() {
     return (
       <header style={headerStyle}>
-        <h1>This is a {this.props.surveyType} Survey</h1>
+        <h1>This is a {this.props.surveyType} Survey for</h1>
         <h2>{this.props.userName}</h2>
+        <h3>All answers are anonymous. Answer to the best of your abilities.</h3>
       </header>
     );
   }
@@ -18,10 +19,11 @@ Header.propTypes = {
 }
 
 const headerStyle = {
-  background: '#333',
-  color: '#fff',
+  background: '#111',
+  color: '#ddd',
   textAlign: 'center',
   padding: '10px',
+  fontFamily: 'Roboto',
 }
 
 export default Header;
