@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Header from './components/layout/Header';
 import Questions from './components/Questions';
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
   state = {
-    // TODO: All questions will eventually come server side.
     questions: [
       {
         id: 1,
@@ -33,7 +33,7 @@ class App extends Component {
       {
         id: 5,
         type: 'multiple',
-        text: 'My manager provides the autonomy I need to do my job (i.r., does not "micro-manage" by getting involved in the details that should handled at other levels).',
+        text: 'My manager provides the autonomy I need to do my job (i.e., does not "micro-manage" by getting involved in the details that should handled at other levels).',
         anser: '',
       },
       {
@@ -107,7 +107,10 @@ class App extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     console.log("SUBMITTED")
-    // this.state.questions
+    // TODO
+    // Post data to server.
+
+    // Disable the button and update button text to "Update" 
   }
 
   onChange = (questionText, answer) => {
@@ -116,14 +119,20 @@ class App extends Component {
     console.log(answer)
   }
 
+  onClick = () => {
+    console.log("Submit!")
+  }
+
   render() {
-    console.log(this.onChange)
     return(
       <div className="App">
         <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
         <div>
           <Questions onChange={this.onChange} questions={this.state.questions} />
         </div>
+        <Button onClick={() => { this.onClick() }} fullWidth={true} variant="contained" color="primary">
+          Submit
+        </Button>
       </div>
     )
   }
