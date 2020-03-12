@@ -142,11 +142,10 @@ class App extends Component {
         <div className="App">
           <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
           <Route
-            exact
-            path="/manager"
+            path="/manager/:uuid/"
             render={props => (
               <React.Fragment>
-                <Questions onChange={this.onChange} questions={this.state.managerQuestions} />
+                <Questions onChange={this.onChange} questions={this.state.managerQuestions} match={props.match}/>
                 <Button
                   disabled={!this.state.requiresSubmit}
                   onClick={ this.onSubmit }
@@ -160,10 +159,10 @@ class App extends Component {
           />
           <Route
             exact
-            path="/peer"
+            path="/peer/:uuid/"
             render={props => (
               <React.Fragment>
-                <Questions onChange={this.onChange} questions={this.state.peerQuestions} />
+                <Questions onChange={this.onChange} questions={this.state.peerQuestions} match={props.match}/>
                 <Button disabled={!this.state.requiresSubmit} onClick={ this.onSubmit } fullWidth={true} variant="contained" color="primary">
                   Submit
                 </Button>

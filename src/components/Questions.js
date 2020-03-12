@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 
 class Questions extends Component {
   render() {
+    console.log(this.props.match.params.uuid)
     return this.props.questions.map((question) => (
-      <QuestionItem key={question.id} question={question} onChange={this.props.onChange}/>
+      <QuestionItem key={question.id}
+                    question={question}
+                    onChange={this.props.onChange}
+                    match={this.props.match} />
     ));
   }
 }
