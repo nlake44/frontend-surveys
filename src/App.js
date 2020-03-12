@@ -140,12 +140,17 @@ class App extends Component {
     return(
       <Router>
         <div className="App">
-          <Header userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
+          <Header userName={this.headerInfo.userName}
+                  surveyType={this.headerInfo.surveyType}
+          />
           <Route
             path="/manager/:uuid/"
             render={props => (
               <React.Fragment>
-                <Questions onChange={this.onChange} questions={this.state.managerQuestions} match={props.match}/>
+                <Questions onChange={this.onChange}
+                           questions={this.state.managerQuestions}
+                           match={props.match}
+                />
                 <Button
                   disabled={!this.state.requiresSubmit}
                   onClick={ this.onSubmit }
@@ -162,8 +167,15 @@ class App extends Component {
             path="/peer/:uuid/"
             render={props => (
               <React.Fragment>
-                <Questions onChange={this.onChange} questions={this.state.peerQuestions} match={props.match}/>
-                <Button disabled={!this.state.requiresSubmit} onClick={ this.onSubmit } fullWidth={true} variant="contained" color="primary">
+                <Questions onChange={this.onChange}
+                           questions={this.state.peerQuestions}
+                           match={props.match}
+                />
+                <Button disabled={!this.state.requiresSubmit}
+                        onClick={ this.onSubmit }
+                        fullWidth={true}
+                        variant="contained"
+                        color="primary">
                   Submit
                 </Button>
               </React.Fragment>
@@ -176,7 +188,9 @@ class App extends Component {
                  <h1>Get the app from the <a href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}>iOS App Store</a> or <a href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}>Android Play Store</a>.</h1>
              )}
            />
-          <Footer userName={this.headerInfo.userName} surveyType={this.headerInfo.surveyType}/>
+          <Footer userName={this.headerInfo.userName}
+                  surveyType={this.headerInfo.surveyType}
+          />
         </div>
       </Router>
     )
