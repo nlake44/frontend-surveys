@@ -6,4 +6,6 @@ npm install @material-ui/icons
 npm install typeface-roboto --save
 npm install react-router-dom
 npm install axios --save
+npm install react-scripts --save
 npm audit fix
+npm install react-scripts --save
